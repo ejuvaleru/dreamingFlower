@@ -1,6 +1,8 @@
 {
   "name": "dreamingFlowers",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "246a5aba"
 }
