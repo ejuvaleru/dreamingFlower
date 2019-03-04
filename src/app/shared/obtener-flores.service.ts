@@ -7,9 +7,27 @@ import { map } from 'rxjs/operators';
 })
 export class ObtenerFloresService {
 
+  private cart = [];
+
   constructor(private http: HttpClient) { }
 
   obtenerRespuesta() {
     return this.http.get('https://dreamflowers-65edb.firebaseio.com/.json');
+  }
+
+  getProducts() {
+    return this.http;
+  }
+
+  getCart() {
+    return this.cart;
+  }
+
+  addProduct(flor) {
+    this.cart.push(flor);
+  }
+
+  deleteProduct(id: number) {
+    this.cart.splice(this.cart.indexOf(id), 1);
   }
 }

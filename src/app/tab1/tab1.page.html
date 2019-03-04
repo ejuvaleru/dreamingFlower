@@ -2,8 +2,13 @@
   <ion-toolbar color="primary">
     <ion-title>
       Dreaming Florwers
-      <ion-icon name="flower" style="float: right;"></ion-icon>
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCart()">
+        <ion-badge *ngIf="cart.length > 0">{{cart.length}}</ion-badge>
+        <ion-icon name="flower" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -22,20 +27,20 @@
     <ion-list-header>
       <ion-label>Flores</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let res of respuesta.flores">
+    <ion-item *ngFor="let flor of respuesta.flores">
       <ion-card class="welcome-card">
-        <ion-img src='{{res.foto}}'></ion-img>
+        <ion-img src='{{flor.foto}}'></ion-img>
         <ion-card-header>
-          <ion-card-title>{{res.nombreF}}</ion-card-title>
+          <ion-card-title>{{flor.nombreF}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>{{res.descripcion}}</p>
+          <p>{{flor.descripcion}}</p>
         </ion-card-content>
         <div class="ionbtn">
           <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-fab-button>
-              <ion-icon name="add"></ion-icon>
-            </ion-fab-button>
+            <ion-button expand="full" (click)="addToCart(flor)">
+              Add to cart
+            </ion-button>
           </ion-fab>
         </div>
       </ion-card>
