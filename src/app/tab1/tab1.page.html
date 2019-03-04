@@ -1,7 +1,8 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       Dreaming Florwers
+      <ion-icon name="flower" style="float: right;"></ion-icon>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +14,7 @@
       <ion-card-title>Bienvenido</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>En Dreaming Florwers tú podrás armar tu propio arreglo floral de una manera fácil y rápida. Garantizamos el
+      <p>En Dreaming Florwers podrás armar tu propio arreglo floral de una manera fácil y rápida. Garantizamos el
         envío hasta la puerta de tu casa.</p>
     </ion-card-content>
   </ion-card>
@@ -21,15 +22,14 @@
     <ion-list-header>
       <ion-label>Flores</ion-label>
     </ion-list-header>
-    <ion-item>
+    <ion-item *ngFor="let res of respuesta.flores">
       <ion-card class="welcome-card">
-        <ion-img src="http://estag.fimagenes.com/img/2/X/X/x/XXx_900.jpg"></ion-img>
+        <ion-img src='{{res.foto}}'></ion-img>
         <ion-card-header>
-          <ion-card-title>Rosas</ion-card-title>
+          <ion-card-title>{{res.nombreF}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>No podemos regalar cualquier rosa a cualquier persona. Ninguna flor ha sabido tocar tan profundamente
-            tantos corazones. La rosa tiene encanto… ¡es una flor majestuosa!</p>
+          <p>{{res.descripcion}}</p>
         </ion-card-content>
         <div class="ionbtn">
           <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -39,30 +39,6 @@
           </ion-fab>
         </div>
       </ion-card>
-    </ion-item>
-    <ion-item>
-      <ion-card class="welcome-card">
-        <ion-img src="http://ainhoaweb.es/wp-content/uploads/2017/02/Los-secretos-de-los-girasoles-1.jpg"></ion-img>
-        <ion-card-header>
-          <ion-card-title>Girasoles</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>El girasol es el símbolo del Sol y simboliza el amor y la admiración. Pero también la felicidad, la
-            vitalidad, el positivismo y la energía. En la cultura china simboliza una larga vida y buena suerte.</p>
-        </ion-card-content>
-        <div class="ionbtn">
-          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-fab-button>
-              <ion-icon name="add"></ion-icon>
-            </ion-fab-button>
-          </ion-fab>
-        </div>
-      </ion-card>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item *ngFor="let res of respuesta.results">
-      <p>Name: {{res.name}} Height: {{res.height}}</p>
     </ion-item>
   </ion-list>
 </ion-content>

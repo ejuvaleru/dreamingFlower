@@ -10,6 +10,6 @@ export class ObtenerFloresService {
   constructor(private http: HttpClient) { }
 
   obtenerRespuesta() {
-    return this.http.get('https://swapi.co/api/people/');
+    return this.http.get('https://dreamflowers-65edb.firebaseio.com/.json');
   }
 }
