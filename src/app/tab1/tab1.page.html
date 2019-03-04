@@ -47,7 +47,8 @@
           <ion-card-title>Girasoles</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>El girasol es el símbolo del Sol y simboliza el amor y la admiración. Pero también la felicidad, la vitalidad, el positivismo y la energía. En la cultura china simboliza una larga vida y buena suerte.</p>
+          <p>El girasol es el símbolo del Sol y simboliza el amor y la admiración. Pero también la felicidad, la
+            vitalidad, el positivismo y la energía. En la cultura china simboliza una larga vida y buena suerte.</p>
         </ion-card-content>
         <div class="ionbtn">
           <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -57,6 +58,11 @@
           </ion-fab>
         </div>
       </ion-card>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let res of respuesta.results">
+      <p>Name: {{res.name}} Height: {{res.height}}</p>
     </ion-item>
   </ion-list>
 </ion-content>
