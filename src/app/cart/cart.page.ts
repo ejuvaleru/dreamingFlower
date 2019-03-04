@@ -33,11 +33,11 @@ export class CartPage implements OnInit {
     this.total = this.selectedItems.reduce((a, b) => a + (b.count * b.precio), 0);
   }
 
-  deleteProduct(flor) {
-    const index = this.selectedItems.indexOf(flor, 1);
-    this.selectedItems.splice(index, flor);
-    this.service.deleteProduct(flor);
-    console.log('Eliminando: ', flor);
+  deleteProduct(id) {
+    const index = this.selectedItems.indexOf(id, 1);
+    this.selectedItems.splice(id, 1);
+    this.service.deleteProduct(id);
+    console.log('Eliminando: ',id);
     this.createCart();
   }
 }

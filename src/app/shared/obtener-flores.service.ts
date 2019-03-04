@@ -28,6 +28,8 @@ export class ObtenerFloresService {
   }
 
   deleteProduct(id: number) {
-    this.cart.splice(this.cart.indexOf(id), 1);
+    console.log(this.cart)
+    console.log(id)
+    this.cart.splice(id, 1);
   }
 }
