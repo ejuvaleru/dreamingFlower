@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Dreaming Florwers
+      Dreaming Flowers
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="openCart()">
-        <ion-badge *ngIf="cart.length > 0">{{cart.length}}</ion-badge>
-        <ion-icon name="flower" slot="icon-only"></ion-icon>
+        <ion-badge id="cart-badge" *ngIf="cart.length > 0">{{cart.length}}</ion-badge>
+        <img class="iconm" src="https://image.flaticon.com/icons/svg/1261/1261146.svg">
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -39,7 +39,7 @@
         <div class="ionbtn">
           <ion-fab vertical="bottom" horizontal="end" slot="fixed">
             <ion-button expand="full" (click)="addToCart(flor)">
-              Add to cart
+              Agregar
             </ion-button>
           </ion-fab>
         </div>

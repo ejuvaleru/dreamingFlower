@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ObtenerFloresService } from '../shared/obtener-flores.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-cart',

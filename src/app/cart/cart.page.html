@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -12,7 +12,7 @@
     <ion-item *ngFor="let item of selectedItems; let i of index">
       <ion-img class="prev-img" src='{{item.foto}}'></ion-img>
       <ion-buttons slot="start">
-        <ion-button (click)="deleteProduct(item)">
+        <ion-button (click)="deleteProduct(item.id)">
           <ion-icon name="close" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-buttons>
