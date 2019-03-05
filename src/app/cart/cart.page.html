@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of selectedItems; let i of index">
+    <ion-item *ngFor="let item of selectedItems; let i = index">
       <ion-img class="prev-img" src='{{item.foto}}'></ion-img>
       <ion-buttons slot="start">
         <ion-button (click)="deleteProduct(item.id)">

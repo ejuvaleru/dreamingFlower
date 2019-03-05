@@ -26,9 +26,25 @@ export class ObtenerFloresService {
 
   addProduct(flor) {
     this.cart.push(flor);
+    console.log(this.cart.length);
+  }
+
+
+  deleteProducts(id:number) {
+    console.log(id);
+    for(var i=0; i<this.cart.length; i++){
+      if(this.cart[i]['id']==id) {
+        this.cart.splice(i,1);
+        break;
+      }
+    }
   }
 
   deleteProduct(id: number) {
-    this.cart.splice(this.cart.indexOf(id), 1);
+    console.log(this.cart)
+    console.log(id)
+
+
+    this.cart.splice(id, 1);
   }
 }
