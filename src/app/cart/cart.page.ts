@@ -36,8 +36,11 @@ export class CartPage implements OnInit {
   deleteProduct(id) {
     const index = this.selectedItems.indexOf(id, 1);
     this.selectedItems.splice(id, 1);
-    this.service.deleteProduct(id);
-    console.log('Eliminando: ',id);
+
+    
+    this.service.deleteProducts(id);
+    console.log('Eliminando: ', id);
     this.createCart();
   }
+
 }

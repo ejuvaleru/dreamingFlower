@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class Tab1Page implements OnInit {
   cart = [];
   items = [];
-
+ 
   respuesta: any;
   constructor(public service: ObtenerFloresService, public router: Router) {
   }
@@ -30,9 +30,11 @@ export class Tab1Page implements OnInit {
 
   addToCart(flor) {
     this.service.addProduct(flor);
+ 
   }
 
   openCart() {
     this.router.navigate(['cart']);
   }
-}
+
+ }
