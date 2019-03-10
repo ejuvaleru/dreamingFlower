@@ -1,0 +1,35 @@
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input required type="text" placeholder="Nombre completo" [(ngModel)]="datosEnvio.nombreC"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="Telefono" [(ngModel)]="datosEnvio.telefonoC"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="Ciudad" [(ngModel)]="datosEnvio.ciudadC"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="C.P." [(ngModel)]="datosEnvio.cpC"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="Calle" [(ngModel)]="datosEnvio.calleC"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="Estado" [(ngModel)]="datosEnvio.status" hidden></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let p of productos">
+      <ion-input required type="text" [(ngModel)]="datosEnvio.arregloFloral" value="{{p.nombreF.value}}">{{p.nombreF}} *
+        {{p.count}}</ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-button expand="full" fill="clear" color="light" (click)="enviarDatos()">
+      Pagar $ {{total}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

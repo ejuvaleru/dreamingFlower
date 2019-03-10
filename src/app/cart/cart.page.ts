@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ObtenerFloresService } from '../shared/obtener-flores.service';
-import { Storage } from '@ionic/storage';
+import { ModalController } from '@ionic/angular';
+import { FormularioPage } from '../formulario/formulario.page';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,7 @@ export class CartPage implements OnInit {
   selectedItems = [];
   total = 0;
 
-  constructor(private service: ObtenerFloresService) { }
+  constructor(private service: ObtenerFloresService, private modalController: ModalController) { }
 
   ngOnInit() {
     this.createCart();
@@ -42,6 +43,17 @@ export class CartPage implements OnInit {
     this.service.deleteProducts(id);
     console.log('Eliminando: ', id);
     this.createCart();
+  }
+
+  async  pagar() {
+    const modal = await this.modalController.create({
+      component: FormularioPage,
+      componentProps: {
+        eltotal: this.total,
+        productosS: this.selectedItems
+      }
+    });
+    modal.present();
   }
 
 }

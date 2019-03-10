@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ObtenerFloresService } from '../shared/obtener-flores.service';
 import { Router } from '@angular/router';
-import { Storage } from '@ionic/storage';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -17,10 +17,12 @@ export class Tab1Page implements OnInit {
   items = [];
 
   respuesta: any;
-  constructor(public service: ObtenerFloresService, public router: Router) {
+
+  constructor(public service: ObtenerFloresService, public router: Router, public loadingController: LoadingController) {
   }
 
   ngOnInit() {
+
     this.cart = this.service.getCart();
     this.service.obtenerRespuesta().subscribe(
       (data) => { this.respuesta = data; console.log(this.respuesta); },
@@ -30,7 +32,6 @@ export class Tab1Page implements OnInit {
 
   addToCart(flor) {
     this.service.addProduct(flor);
-
   }
 
   openCart() {

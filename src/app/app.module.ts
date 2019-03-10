@@ -11,13 +11,22 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { IonicStorageModule } from '@ionic/storage';
-
+import { FormularioPageModule } from './formulario/formulario.module';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,  IonicStorageModule.forRoot()],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule, HttpClientModule,
+    FormularioPageModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
+  ],
   providers: [
     Geolocation,
     StatusBar,

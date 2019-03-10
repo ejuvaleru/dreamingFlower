@@ -19,8 +19,16 @@
       {{item.count}} x {{ item.nombreF }} - {{ item.precio | currency:'MXN':'symbol'}}
       <ion-label slot="end" text-right>{{ (item.precio*item.count) | currency:'MXN':'symbol' }}</ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="total > 0">
       Total: <span slot="end">{{ total | currency:'MXN':'symbol' }}</span>
+    </ion-item>
+    <ion-item *ngIf="total == 0">
+      Nada agregado aún
     </ion-item>
   </ion-list>
 </ion-content>
+<ion-footer>
+  <ion-button *ngIf="selectedItems.length > 0" color="primary" expand="block" (click)="pagar()">
+    Pagar ahora
+  </ion-button>
+</ion-footer>

@@ -27,19 +27,19 @@
     <ion-list-header>
       <ion-label>Flores</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let flor of respuesta.flores">
+    <ion-item *ngFor="let flor of respuesta?.flores">
       <ion-card class="welcome-card">
         <ion-img src='{{flor.foto}}'></ion-img>
         <ion-card-header>
           <ion-card-title>{{flor.nombreF}}</ion-card-title>
         </ion-card-header>
-        <ion-card-content>
-          <p>{{flor.descripcion}}</p>
+        <ion-card-content justify-center>
+          <p>${{flor.precio}}</p>
         </ion-card-content>
         <div class="ionbtn">
           <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-button expand="full" (click)="addToCart(flor)">
-              Agregar
+            <ion-button (click)="addToCart(flor)">
+              Añadir 
             </ion-button>
           </ion-fab>
         </div>
