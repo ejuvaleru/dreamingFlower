@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="floating"><ion-icon name="person"></ion-icon> Usuario</ion-label>
+    <ion-input [(ngModel)]="user.email" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating"><ion-icon name="lock"></ion-icon> Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password" required></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" shape="round" (click)="register(user)">Continuar</ion-button>
+  <ion-button expand="full" shape="round" routerLink="/login">Iniciar sesión</ion-button>
+  <ion-button expand="block" color="danger" shape="round" (click)="googleLogin()">
+    <ion-icon slot="end" name="logo-google"></ion-icon>
+    Continuar con Gmail
+  </ion-button>
+</ion-content>

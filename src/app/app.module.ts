@@ -12,9 +12,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { FormularioPageModule } from './formulario/formulario.module';
+
+// Firebase imports
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth'; // afAuthM para la autenticación de usuarios
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +28,8 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule, HttpClientModule,
     FormularioPageModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [
     Geolocation,

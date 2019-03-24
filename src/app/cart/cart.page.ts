@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ObtenerFloresService } from '../shared/obtener-flores.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { FormularioPage } from '../formulario/formulario.page';
 
 @Component({
@@ -13,12 +13,16 @@ export class CartPage implements OnInit {
   selectedItems = [];
   total = 0;
 
-  constructor(private service: ObtenerFloresService, private modalController: ModalController) { }
+  constructor(private service: ObtenerFloresService, private modalController: ModalController,
+    private nav: NavController) { }
 
   ngOnInit() {
     this.createCart();
   }
 
+  back() {
+    this.nav.navigateBack('/app/tabs/tab1');
+  }
   createCart() {
     const items = this.service.getCart();
     const selected = {};

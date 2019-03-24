@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { LoadingController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 declare var google;
 
@@ -12,10 +14,18 @@ declare var google;
 export class Tab2Page implements OnInit {
   map: any;
   loading: any;
-  constructor(private geolocation: Geolocation) { }
+  constructor(
+    private geolocation: Geolocation,
+    private afAuth: AngularFireAuth,
+    public router: Router) { }
 
   ngOnInit() {
     this.getPosition();
+  }
+
+  logout() {
+    this.router.navigateByUrl('login');
+    return this.afAuth.auth.signOut();
   }
 
   getPosition(): any {

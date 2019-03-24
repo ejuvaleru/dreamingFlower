@@ -1,23 +1,4 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
-}
-
-ion-checkbox{
-  margin-left: 90%;
-}
-
-.ionbtn{
-  width: 100%;
-  height: 8vh;
-}
-#cart-badge {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  background: transparent;
-}
-
+// Titulo
 ion-title {
   position: absolute;
   top: 0;
@@ -27,9 +8,30 @@ ion-title {
   height: 100%;
   text-align: center;
 }
+
+// Carrito de compras
+#cart-badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: transparent;
+}
+
 .iconm{
   width: 40px;
 }
-.ionbtn{
-  height: 60px;
+
+// Cards 
+ion-row {
+  ion-card {
+      width:100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+  }
+  img{
+    size: 100%;
+    height: 200px;
+  }
 }

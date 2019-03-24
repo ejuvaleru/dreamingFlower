@@ -8,26 +8,26 @@ import { DatosUsuarioService, DatosEnvio } from '../shared/datos-usuario.service
 })
 export class FormularioPage implements OnInit {
 
-  total = null;
+  untotal = null;
   productos: any;
-  pedidoId = null;
-  datosEnvio: DatosEnvio = {
-    nombreC: '',
-    ciudadC: '',
-    calleC: '',
-    cpC: '',
-    telefonoC: '',
-    arregloFloral: [],
-    status: false
-  };
-
+  datosEnvio: DatosEnvio;
   constructor(private navParams: NavParams, private modalController: ModalController,
     private loadingCrtl: LoadingController, private nav: NavController, private service: DatosUsuarioService) { }
 
   ngOnInit() {
-    this.total = this.navParams.get('eltotal');
+    this.untotal = this.navParams.get('eltotal');
     this.productos = this.navParams.get('productosS');
     console.log(this.productos);
+    this.datosEnvio = {
+      nombreC: '',
+      ciudadC: '',
+      calleC: '',
+      cpC: '',
+      telefonoC: '',
+      arregloFloral: this.productos,
+      total: this.untotal,
+      status: false
+    };
   }
 
   close() {
@@ -44,7 +44,7 @@ export class FormularioPage implements OnInit {
     this.service.addTodo(this.datosEnvio).then(() => {
       loading.dismiss();
       this.close();
-      this.nav.navigateBack('');
+      this.nav.navigateBack('/app/tabs/tab1');
     });
   }
 }
