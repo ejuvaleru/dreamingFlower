@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { DatosUsuarioService, DatosEnvio } from '../shared/datos-usuario.service';
 import { ObtenerFloresService } from '../shared/obtener-flores.service';
-import { ToastOptions } from '@ionic/core';
+
+
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.page.html',
@@ -25,7 +26,6 @@ export class FormularioPage implements OnInit {
   ngOnInit() {
     this.untotal = this.navParams.get('eltotal');
     this.productos = this.navParams.get('productosS');
-    console.log(this.productos);
     this.datosEnvio = {
       nombreC: '',
       ciudadC: '',
@@ -34,7 +34,8 @@ export class FormularioPage implements OnInit {
       telefonoC: '',
       arregloFloral: this.productos,
       total: this.untotal,
-      status: false
+      status: false,
+      entregado: false,
     };
     console.log(this.floresService.token);
   }

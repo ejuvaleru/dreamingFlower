@@ -82,7 +82,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^3.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <engine name="android" spec="7.1.4" />
     <plugin name="cordova-plugin-geolocation" spec="4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Para localizar la floreria más cercana." />
     </plugin>
@@ -91,4 +90,6 @@
     </edit-config>
     <plugin name="cordova-sqlite-storage" spec="3.1.0" />
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
+    <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="2.4.0" />
+    <engine name="android" spec="7.1.4" />
 </widget>

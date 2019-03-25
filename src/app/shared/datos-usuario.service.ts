@@ -12,6 +12,7 @@ export interface DatosEnvio {
   arregloFloral: any;
   status: boolean;
   total: number;
+  entregado: boolean;
 }
 
 @Injectable({
@@ -44,9 +45,10 @@ export class DatosUsuarioService {
           cpC: pedido.cpC,
           ciudadC: pedido.ciudadC,
           telefonoC: pedido.telefonoC,
-          arregloFloral: pedido.arregloFloral.nombreF,
+          arregloFloral: pedido.arregloFloral,
           status: pedido.status,
-          total: pedido.total
+          total: pedido.total,
+          entregado: pedido.entregado
         })
         .then(
           res => resolve(res),
