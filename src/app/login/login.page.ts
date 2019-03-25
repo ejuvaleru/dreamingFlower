@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   signIn(user: User) {
     this.auth.login(user).then(res =>
       this.router.navigateByUrl('/app/tabs/tab1')
-    ).catch(err => this.mensajeError('Usuario o contraseña incorrecta.')
+    ).catch(err => this.mensajeError('' + err)
     );
   }
 

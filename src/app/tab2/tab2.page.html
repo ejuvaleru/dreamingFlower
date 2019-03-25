@@ -6,7 +6,14 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <ion-button (click)="logout()">
+  <h1>Hola</h1>
+  <h3>{{correoUsuario}}</h3>
+  <h2>Tus coordenadas son</h2>
+  <h3>Latitud:</h3>
+  <p>{{lat}}</p>
+  <h3>Longitud:</h3>
+  <p>{{long}}</p>
+  <ion-button (click)="logOutAuth()">
     Cerrar sesión
   </ion-button>
 </ion-content>

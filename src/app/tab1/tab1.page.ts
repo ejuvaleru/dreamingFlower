@@ -1,9 +1,9 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ObtenerFloresService } from '../shared/obtener-flores.service';
 import { Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController, ModalController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { async } from '@angular/core/testing';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -17,20 +17,34 @@ import { async } from '@angular/core/testing';
 export class Tab1Page implements OnInit {
   cart = [];
   items = [];
+  lat: number;
+  long: number;
 
   respuesta: any;
 
   constructor(public service: ObtenerFloresService,
     public router: Router,
-    public loadingController: LoadingController,
-    private afAuth: AngularFireAuth,
+    private geolocation: Geolocation,
+    private modalController: ModalController,
+    private loadingCrtl: LoadingController,
   ) {
   }
 
   ngOnInit() {
     this.cart = this.service.getCart();
-    this.service.obtenerRespuesta().subscribe(
-      (data) => { this.respuesta = data; console.log(this.respuesta); },
+    this.getPosition();
+    this.cargarFlores();
+  }
+
+  async cargarFlores() {
+    const loading = await this.loadingCrtl.create({
+      message: 'Cargando...'
+    });
+    await loading.present();
+
+    this.service.obtenerFlores().subscribe(
+      (data) => { this.respuesta = data;
+        loading.dismiss(); },
       (error) => { console.log(error); }
     );
   }
@@ -41,6 +55,18 @@ export class Tab1Page implements OnInit {
 
   openCart() {
     this.router.navigate(['cart']);
+  }
+
+  getPosition(): any {
+    const locationOptions = { timeout: 30000, enableHighAccuracy: true };
+    this.geolocation.getCurrentPosition(locationOptions).then(response => {
+      console.log(response);
+      this.lat = response.coords.latitude;
+      this.long = response.coords.longitude;
+    })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
 }

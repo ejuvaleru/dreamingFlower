@@ -1,3 +1,22 @@
-ion-button{
-    text-transform: capitalize;
+ion-button {
+  text-transform: capitalize;
+}
+.cont {
+  margin-top: 20px;
+}
+.container {
+  margin-top: 10px;
+  padding: 10px;
+}
+ion-content {
+  --ion-background-color: #eaecee;
+}
+ion-item {
+  margin-top: 10px;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

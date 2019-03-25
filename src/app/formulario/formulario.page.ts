@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController, LoadingController, NavController } from '@ionic/angular';
 import { DatosUsuarioService, DatosEnvio } from '../shared/datos-usuario.service';
+import { ObtenerFloresService } from '../shared/obtener-flores.service';
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.page.html',
@@ -11,8 +12,13 @@ export class FormularioPage implements OnInit {
   untotal = null;
   productos: any;
   datosEnvio: DatosEnvio;
-  constructor(private navParams: NavParams, private modalController: ModalController,
-    private loadingCrtl: LoadingController, private nav: NavController, private service: DatosUsuarioService) { }
+  constructor(
+    private navParams: NavParams,
+    private modalController: ModalController,
+    private loadingCrtl: LoadingController,
+    private nav: NavController,
+    private service: DatosUsuarioService,
+    private floresService: ObtenerFloresService) { }
 
   ngOnInit() {
     this.untotal = this.navParams.get('eltotal');
@@ -37,7 +43,7 @@ export class FormularioPage implements OnInit {
   async enviarDatos() {
 
     const loading = await this.loadingCrtl.create({
-      message: 'Enviando pedido..'
+      message: 'Enviando pedido...'
     });
     await loading.present();
 
@@ -45,6 +51,7 @@ export class FormularioPage implements OnInit {
       loading.dismiss();
       this.close();
       this.nav.navigateBack('/app/tabs/tab1');
+      this.floresService.resetCart();
     });
   }
 }

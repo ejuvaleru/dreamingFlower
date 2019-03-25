@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
-import { LoadingController } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Router } from '@angular/router';
-
-declare var google;
+import { AuthenticationService } from '../shared/authentication.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-tab2',
@@ -12,57 +10,39 @@ declare var google;
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
+  correoUsuario: string; // Correo del usuario logeado
+  lat: number;
+  long: number;
+
   map: any;
   loading: any;
   constructor(
-    private geolocation: Geolocation,
     private afAuth: AngularFireAuth,
+    private authservice: AuthenticationService,
+    private geolocation: Geolocation,
     public router: Router) { }
 
   ngOnInit() {
+    this.afAuth.user.subscribe(data => {
+      this.correoUsuario = data.email.toString();
+    });
     this.getPosition();
   }
 
-  logout() {
-    this.router.navigateByUrl('login');
-    return this.afAuth.auth.signOut();
+  logOutAuth() {
+    this.afAuth.auth.signOut();
+    this.router.navigate(['/login']);
   }
 
   getPosition(): any {
     const locationOptions = { timeout: 30000, enableHighAccuracy: true };
     this.geolocation.getCurrentPosition(locationOptions).then(response => {
-      this.loadMap(response);
       console.log(response);
+      this.lat = response.coords.latitude;
+      this.long = response.coords.longitude;
     })
       .catch(error => {
         console.log(error);
       });
-  }
-
-  loadMap(position: Geoposition) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    console.log(latitude, longitude);
-
-    // create a new map by passing HTMLElement
-    const mapEle: HTMLElement = document.getElementById('map');
-
-    // create LatLng object
-    const myLatLng = { lat: latitude, lng: longitude };
-
-    // create map
-    this.map = new google.maps.Map(mapEle, {
-      center: myLatLng,
-      zoom: 15
-    });
-
-    google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      const marker = new google.maps.Marker({
-        position: myLatLng,
-        map: this.map,
-        title: 'Hello World!'
-      });
-      mapEle.classList.add('show-map');
-    });
   }
 }

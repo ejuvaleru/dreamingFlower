@@ -10,7 +10,7 @@ export class ObtenerFloresService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerRespuesta() {
+  obtenerFlores() {
     return this.http.get('https://dreamflowers-65edb.firebaseio.com/.json');
   }
 
@@ -24,6 +24,10 @@ export class ObtenerFloresService {
 
   setCart() {
     this.cart = null;
+  }
+
+  resetCart() {
+    this.cart.length = 0;
   }
 
   addProduct(flor) {

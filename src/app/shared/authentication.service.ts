@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class AuthenticationService {
 
   user = {} as User;
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
   // Método de login
   login(user: User) {
@@ -26,6 +27,19 @@ export class AuthenticationService {
       this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(user => {
         resolve(user);
       }).catch(err => rejected(err));
+    });
+  }
+
+  // Logout
+  logout() {
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['login']);
+    });
+  }
+
+  getDetalles() {
+    this.afAuth.user.subscribe(data => {
+      console.log(data);
     });
   }
 }
