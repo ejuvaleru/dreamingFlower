@@ -6,4 +6,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-button (click)="tomarFoto()">
+    Tomar foto
+  </ion-button>
+  {{ picData }}
+  <img src="{{ picUrl }}">
+</ion-content>

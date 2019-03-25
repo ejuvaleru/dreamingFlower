@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { FormularioPageModule } from './formulario/formulario.module';
+import { Camera } from '@ionic-native/camera/ngx';
 
 // Firebase imports
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -32,6 +33,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth'; // afAuthM para la a
     AngularFireAuthModule,
   ],
   providers: [
+    Camera,
     Geolocation,
     StatusBar,
     SplashScreen,
