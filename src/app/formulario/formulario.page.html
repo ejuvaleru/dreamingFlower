@@ -4,7 +4,7 @@
       <ion-input required type="text" placeholder="Nombre completo" [(ngModel)]="datosEnvio.nombreC"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input required type="text" placeholder="Telefono" [(ngModel)]="datosEnvio.telefonoC"></ion-input>
+      <ion-input required type="number" placeholder="Telefono" [(ngModel)]="datosEnvio.telefonoC"></ion-input>
     </ion-item>
     <ion-item>
       <ion-input required type="text" placeholder="Ciudad" [(ngModel)]="datosEnvio.ciudadC"></ion-input>
@@ -18,15 +18,8 @@
     <ion-item>
       <ion-input required type="text" placeholder="Estado" [(ngModel)]="datosEnvio.status" hidden></ion-input>
     </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item>
-      <ion-input>
-        {{untotal}}
-      </ion-input>
-    </ion-item>
-    <ion-item *ngFor="let p of productos">
-      <ion-input required type="text" [(ngModel)]="datosEnvio.arregloFloral" value="{{p.nombreF.value}}">{{p.nombreF}} *
+    <ion-item *ngFor="let p of productos" hidden>
+      <ion-input type="text" [(ngModel)]="datosEnvio.arregloFloral">{{p.nombreF}} *
         {{p.count}}</ion-input>
     </ion-item>
   </ion-list>
