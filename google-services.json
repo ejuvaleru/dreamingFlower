@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "681540908298",
+    "firebase_url": "https://dreamflowers-65edb.firebaseio.com",
+    "project_id": "dreamflowers-65edb",
+    "storage_bucket": "dreamflowers-65edb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681540908298:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681540908298-3kuu45qnobtl0to820r7u7l3kqths7gc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv2oNtyJ0xBqE_DMjVG4aIZRSz15Z-vDM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

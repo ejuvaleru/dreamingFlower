@@ -19,6 +19,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth'; // afAuthM para la autenticación de usuarios
 
+import { FCM } from '@ionic-native/fcm/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -32,6 +34,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth'; // afAuthM para la a
     AngularFireAuthModule,
   ],
   providers: [
+    FCM,
     Geolocation,
     StatusBar,
     SplashScreen,
