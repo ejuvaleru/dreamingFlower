@@ -15,6 +15,7 @@ export class AuthenticationService {
   // Método de login
   login(user: User) {
     return new Promise((resolve, rejected) => {
+      // tslint:disable-next-line:no-shadowed-variable
       this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password).then(user => {
         resolve(user);
       }).catch(err => rejected(err));
@@ -24,6 +25,7 @@ export class AuthenticationService {
   // Método de register
   register(user: User) {
     return new Promise((resolve, rejected) => {
+      // tslint:disable-next-line:no-shadowed-variable
       this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(user => {
         resolve(user);
       }).catch(err => rejected(err));

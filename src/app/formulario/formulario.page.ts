@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ModalController, LoadingController, NavController } from '@ionic/angular';
+import { NavParams, ModalController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { DatosUsuarioService, DatosEnvio } from '../shared/datos-usuario.service';
 import { ObtenerFloresService } from '../shared/obtener-flores.service';
+import { ToastOptions } from '@ionic/core';
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.page.html',
@@ -18,7 +19,8 @@ export class FormularioPage implements OnInit {
     private loadingCrtl: LoadingController,
     private nav: NavController,
     private service: DatosUsuarioService,
-    private floresService: ObtenerFloresService) { }
+    private floresService: ObtenerFloresService,
+    public toastCtrl: ToastController) { }
 
   ngOnInit() {
     this.untotal = this.navParams.get('eltotal');
@@ -34,10 +36,19 @@ export class FormularioPage implements OnInit {
       total: this.untotal,
       status: false
     };
+    console.log(this.floresService.token);
   }
 
   close() {
     this.modalController.dismiss();
+  }
+  async presentToast(mensaje: string) {
+    const toast = await this.toastCtrl.create({
+      message: mensaje,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 
   async enviarDatos() {

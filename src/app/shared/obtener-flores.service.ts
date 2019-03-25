@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ObtenerFloresService {
-
+  public token = 'string';
   private cart = [];
 
   constructor(private http: HttpClient) { }
@@ -38,8 +38,8 @@ export class ObtenerFloresService {
 
   deleteProducts(id: number) {
     console.log(id);
-    for (var i = 0; i < this.cart.length; i++) {
-      if (this.cart[i]['id'] == id) {
+    for (let i = 0; i < this.cart.length; i++) {
+      if (this.cart[i]['id'] === id) {
         this.cart.splice(i, 1);
         break;
       }
@@ -50,5 +50,9 @@ export class ObtenerFloresService {
     console.log(this.cart);
     console.log(id);
     this.cart.splice(id, 1);
+  }
+
+  saveToken(token) {
+    this.token = token;
   }
 }
