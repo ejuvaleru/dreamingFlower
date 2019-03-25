@@ -13,6 +13,7 @@ export interface DatosEnvio {
   status: boolean;
   total: number;
   entregado: boolean;
+  token: string;
 }
 
 @Injectable({

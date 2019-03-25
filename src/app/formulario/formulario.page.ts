@@ -36,8 +36,9 @@ export class FormularioPage implements OnInit {
       total: this.untotal,
       status: false,
       entregado: false,
+      token: this.floresService.token
     };
-    console.log(this.floresService.token);
+    this.presentToast(this.floresService.token);
   }
 
   close() {
