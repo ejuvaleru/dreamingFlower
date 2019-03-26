@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth'; // afAuthM para la autenticación de usuarios
 
 import { FCM } from '@ionic-native/fcm/ngx';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
   ],
   providers: [
     FCM,

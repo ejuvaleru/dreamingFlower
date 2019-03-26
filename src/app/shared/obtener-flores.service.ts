@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,23 @@ export class ObtenerFloresService {
   public token = 'string';
   private cart = [];
 
-  constructor(private http: HttpClient) { }
+  floreriasRef: AngularFireList<any>; // Referencia a una lista de tours
+  floreriaRef: AngularFireObject<any>; // Referencia a un sólo objeto de tour
+
+  constructor(
+    private http: HttpClient,
+    private db: AngularFireDatabase
+  ) { }
 
   obtenerFlores() {
     return this.http.get('https://dreamflowers-65edb.firebaseio.com/.json');
+  }
+
+  // Obtener lista de tours
+  getListFlorerias() {
+    this.floreriasRef = this.db.list('florerias/');
+    console.log('ESTOY AQUI ' + this.floreriasRef);
+    return this.floreriasRef;
   }
 
   getProducts() {
