@@ -14,6 +14,7 @@ export interface DatosEnvio {
   total: number;
   entregado: boolean;
   token: string;
+  floreriaId: string;
 }
 
 @Injectable({
