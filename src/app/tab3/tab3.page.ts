@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { storage } from 'firebase';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -9,7 +10,8 @@ import { storage } from 'firebase';
 })
 export class Tab3Page {
   picUrl: any;
-  constructor(private camara: Camera) {
+  constructor(private camara: Camera,
+    public toastCtrl: ToastController) {
   }
 
   async tomarFoto() {
@@ -31,10 +33,22 @@ export class Tab3Page {
       const nombre = Math.random();
       const pictures = storage().ref(`pictures/${nombre}`);
       pictures.putString(image, 'data_url').then(data => {
-        this.picUrl = data.downloadURL;
+        const ref = storage().ref(`pictures/${nombre}`);
+        const downloadURL = ref.getDownloadURL().then(url => {
+          this.picUrl = data.downloadURL;
+        });
       });
+      this.mensajeError(this.picUrl);
     } catch (err) {
       console.log(err);
     }
+  }
+  async mensajeError(mensaje: string) {
+    const toast = await this.toastCtrl.create({
+      message: mensaje,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 }
