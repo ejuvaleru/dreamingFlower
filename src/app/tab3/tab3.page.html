@@ -7,9 +7,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="tomarFoto()">
-    Tomar foto
-  </ion-button>
-  {{ picUrl }}
-  <img src="{{ picUrl }}">
+    <div padding>
+        <ion-button (click)="tomarFoto()">
+            Tomar foto
+          </ion-button>
+    </div>
+<div  >
+    <ion-card   *ngFor="let image of images" >
+        <img src="{{ image.urlImage }}">
+        <ion-card-header>
+            <ion-card-title>Arreglo Bonito</ion-card-title>
+          </ion-card-header>
+      </ion-card>
+    
+</div>
+ 
 </ion-content>
+
