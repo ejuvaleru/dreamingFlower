@@ -23,6 +23,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth'; // afAuthM para la a
 
 import { FCM } from '@ionic-native/fcm/ngx';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -34,7 +35,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [
     FCM,

@@ -8,12 +8,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ObtenerFloresService {
-  floreriasRef: AngularFireList<any[]>;
   public token = 'string';
   private cart = [];
 
-  constructor(private http: HttpClient, // Referencia al Módulo de FirebaseDatabase
-    private db: AngularFireDatabase) { }
+  floreriasRef: AngularFireList<any>; // Referencia a una lista de tours
+  floreriaRef: AngularFireObject<any>; // Referencia a un sólo objeto de tour
+
+  constructor(
+    private http: HttpClient,
+    private db: AngularFireDatabase
+  ) { }
 
   obtenerFlores() {
     return this.http.get('https://dreamflowers-65edb.firebaseio.com/.json');
@@ -24,6 +28,12 @@ export class ObtenerFloresService {
     console.log(this.floreriasRef);
     return this.floreriasRef;
 }
+  // Obtener lista de tours
+  getListFlorerias() {
+    this.floreriasRef = this.db.list('florerias/');
+    console.log('ESTOY AQUI ' + this.floreriasRef);
+    return this.floreriasRef;
+  }
 
   getProducts() {
     return this.http;
