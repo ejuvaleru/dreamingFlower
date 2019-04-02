@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../shared/authentication.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ObtenerFloresService } from '../shared/obtener-flores.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-tab2',
