@@ -29,37 +29,36 @@ export class Tab2Page implements OnInit {
   menor = 10000000000;
 
   florerias: any[] = [
-    {
-      id: 1,
-      nombre: 'Aeropuerto',
-      lat: 21.043891119241536,
-      long: -86.87116486712281
-    },
-    {
-      id: 2,
-      nombre: 'Cancún Centro',
-      lat: 21.16124219259362,
-      long: -86.82719949721748
-    },
-    {
-      id: 3,
-      nombre: 'Puerto Morelos',
-      lat: 20.847668217369332,
-      long: -86.87607332871963
-    }
+
   ];
   constructor(
     // private floresService: ObtenerFloresService,
     private afAuth: AngularFireAuth,
     private geolocation: Geolocation,
-    public router: Router) { }
+    public router: Router,
+    private floresService: ObtenerFloresService) { }
 
   ngOnInit() {
     this.afAuth.user.subscribe(data => {
       this.correoUsuario = data.email.toString();
     });
-    this.getPosition();
+
+    const t = this.floresService.obtenerFlores2();
+    t.valueChanges().subscribe(data => {
+      data.forEach(item => {
+        this.setArreglo(item);
+      });
+    });
   }
+
+  setArreglo(data) {
+    this.florerias.push(data);
+    this.getPosition();
+    console.log(this.florerias);
+
+  }
+
+
 
   // Método para cerrar sesión
   logOutAuth() {
@@ -82,6 +81,7 @@ export class Tab2Page implements OnInit {
 
   // Obtener florerias para calcular distancias
   obtenerFlorerias(laU: number, lnU: number) {
+    console.log(this.florerias + '  florerías');
     this.florerias.forEach(item => {
       this.lat = item.lat;
       this.long = item.long;
@@ -92,7 +92,7 @@ export class Tab2Page implements OnInit {
         if (this.calcularDistancia(this.lat, laU, this.long, lnU) < this.menor) {
           this.menor = this.calcularDistancia(this.lat, laU, this.long, lnU);
           this.floreriaCercanaNombre = item.nombre;
-          this.floreriaCercanaID = item.id;
+          this.floreriaCercanaID = item.userId;
         }
       }
 

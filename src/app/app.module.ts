@@ -17,11 +17,12 @@ import { Camera } from '@ionic-native/camera/ngx';
 // Firebase imports
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth'; // afAuthM para la autenticación de usuarios
 
 import { FCM } from '@ionic-native/fcm/ngx';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+
 
 @NgModule({
   declarations: [AppComponent],

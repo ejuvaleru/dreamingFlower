@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,11 @@ export class ObtenerFloresService {
     return this.http.get('https://dreamflowers-65edb.firebaseio.com/.json');
   }
 
+  obtenerFlores2() {
+    this.floreriasRef = this.db.list('florerias/');
+    console.log(this.floreriasRef);
+    return this.floreriasRef;
+}
   // Obtener lista de tours
   getListFlorerias() {
     this.floreriasRef = this.db.list('florerias/');
@@ -68,5 +75,11 @@ export class ObtenerFloresService {
 
   saveToken(token) {
     this.token = token;
+  }
+
+  // Obtener lista de tours
+  getFloreriasList() {
+    this.floreriasRef = this.db.list('florerias/');
+    return this.floreriasRef;
   }
 }

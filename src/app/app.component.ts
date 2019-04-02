@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Platform, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -11,6 +11,8 @@ import { ObtenerFloresService } from './shared/obtener-flores.service';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+
+  private florerias: [];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -20,6 +22,7 @@ export class AppComponent {
     public toastCtrl: ToastController
   ) {
     this.initializeApp();
+    this.floresService.getFloreriasList();
   }
 
   initializeApp() {
@@ -49,6 +52,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    console.log(this.floresService.getFloreriasList());
   }
 
   async mensajeError(mensaje: string) {
