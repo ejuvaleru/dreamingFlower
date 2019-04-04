@@ -5,22 +5,34 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content padding>
-  <h1>Hola</h1>
-  <h3>{{correoUsuario}}</h3>
-  <h2>Tus coordenadas son</h2>
-  <h3>Latitud:</h3>
-  <p>{{uLat}}</p>
-  <h3>Longitud:</h3>
-  <p>{{uLong}}</p>
-  <h3>La floreria más cercana queda a:</h3>
-  <p>{{menor}}km</p>
-  <h3>FLORERIA:</h3>
-  <p>Nombre: {{floreriaCercanaNombre}}</p>
-  <p>ID: {{floreriaCercanaID}}</p>
-
-  <ion-button (click)="getPosition()">Obtener mi floreria</ion-button>
-  <ion-button (click)="logOutAuth()">
-    Cerrar sesión
-  </ion-button>
+<ion-content>
+  <div id="img-profile" class="container">
+    <img src="https://image.flaticon.com/icons/svg/145/145843.svg" width="100px">
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="mi-container ion-text-center">
+    <ion-item class="ion-text-center" lines="none">
+      <ion-icon name="at"></ion-icon>
+      <p style="font-size: 15px">{{correoUsuario}}</p>
+    </ion-item>
+    <!--<h2>Tus coordenadas son</h2>
+    <h3>Latitud:</h3>
+    <p>{{uLat}}</p>
+    <h3>Longitud:</h3>
+    <p>{{uLong}}</p>
+    <h3>La floreria más cercana queda a:</h3>-->
+    <h3>Tu pedido será enviado a:</h3>
+    <strong>
+      <p>{{floreriaCercanaNombre}}</p>
+    </strong>
+    <p>{{menor}} km</p>
+    <!--<p>ID: {{floreriaCercanaID}}</p>-->
+  </div>
 </ion-content>
+<ion-footer>
+  <ion-button size="small" expand="full" (click)="logOutAuth()">
+    <ion-icon name="log-out"></ion-icon> Cerrar sesión
+  </ion-button>
+</ion-footer>

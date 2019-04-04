@@ -1,26 +1,22 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-       Comunidad
+      Comunidad
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-    <div padding>
-        <ion-button (click)="tomarFoto()">
-            Tomar foto
-          </ion-button>
-    </div>
-<div  >
-    <ion-card   *ngFor="let image of images" >
-        <img src="{{ image.urlImage }}">
-        <ion-card-header>
-            <ion-card-title>Arreglo Bonito</ion-card-title>
-          </ion-card-header>
-      </ion-card>
-    
-</div>
- 
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+    <ion-fab-button color="light" (click)="tomarFoto()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div>
+    <ion-card *ngFor="let image of images">
+      <img src="{{ image.urlImage }}">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Un bonito arreglo</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
 </ion-content>
-

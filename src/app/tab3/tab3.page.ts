@@ -41,9 +41,7 @@ export class Tab3Page implements OnInit {
     //
     try {
       const options: CameraOptions = {
-        quality: 80,
-        targetHeight: 200,
-        targetWidth: 200,
+        quality: 100,
         destinationType: this.camara.DestinationType.DATA_URL,
         encodingType: this.camara.EncodingType.JPEG,
         mediaType: this.camara.MediaType.PICTURE,

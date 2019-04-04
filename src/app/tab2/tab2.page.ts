@@ -106,6 +106,6 @@ export class Tab2Page implements OnInit {
     const a = 0.5 - c((lat1 - lat2) * p) / 2 + c(lat2 * p) * c((lat1) * p) * (1 - c(((long1 - long2) * p))) / 2;
     const dis = (12742 * Math.asin(Math.sqrt(a))); // 2 * R; R = 6371 km
     console.log(dis);
-    return dis;
+    return Math.round(dis * 100) / 100;
   }
 }
